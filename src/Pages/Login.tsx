@@ -68,6 +68,11 @@ const LoginPage = () => {
         >
           Log In
         </button>
+        <p className="text-sm text-center">
+  Don't have an account?{" "}
+  <a href="/register" className="text-blue-600 hover:underline">Create one</a>
+</p>
+
       </form>
     </div>
   );

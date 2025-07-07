@@ -28,10 +28,17 @@ const SignUp = () => {
 
     try {
       // Register user
-      await axios.post("/auth/register", formData);
+          await axios.post("/auth/register", formData);
 
-      // Login immediately
-      const res = await axios.get("/auth/me");
+    // THEN login explicitly (same creds just registered)
+    await axios.post("/auth/login", {
+      email: formData.email,
+      password: formData.password,
+    });
+
+    // Fetch user
+    const res = await axios.get("/auth/me");
+
       login(res.data);
 
       navigate("/dashboard");
