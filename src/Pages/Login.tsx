@@ -15,18 +15,11 @@ const LoginPage = () => {
     e.preventDefault();
     setError("");
 
-    try {
-      // 1. Hit login endpoint
-      await axios.post("/auth/login", { email, password });
-
-      // 2. Get the current user from /auth/me
+    try { 
+      await axios.post("/auth/login", { email, password }); 
       const res = await axios.get("/auth/me");
       const user = res.data;
-
-      // 3. Store user in AuthContext
       login(user);
-
-      // 4. Navigate to role-based dashboard
       navigate("/dashboard");
     } catch (err: any) {
       console.error("Login failed:", err);

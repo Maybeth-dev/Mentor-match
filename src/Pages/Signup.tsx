@@ -12,7 +12,7 @@ const SignUp = () => {
     password: "",
     firstName: "",
     lastName: "",
-    role: "mentee", // default value
+    role: "mentee",  
   });
 
   const [error, setError] = useState("");
@@ -26,22 +26,16 @@ const SignUp = () => {
     e.preventDefault();
     setError("");
 
-    try {
-      // Register user
+    try { 
           await axios.post("/auth/register", formData);
 
-    // THEN login explicitly (same creds just registered)
     await axios.post("/auth/login", {
       email: formData.email,
       password: formData.password,
-    });
-
-    // Fetch user
-    const res = await axios.get("/auth/me");
-
-      login(res.data);
-
-      navigate("/dashboard");
+    }); 
+    const res = await axios.get("/auth/me"); 
+     login(res.data); 
+     navigate("/dashboard");
     } catch (err: any) {
       console.error("Register failed:", err);
       setError("Something went wrong during registration.");

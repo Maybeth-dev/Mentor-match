@@ -17,7 +17,7 @@ type AuthContextType = {
   isAuthenticated: boolean;
   login: (user: User) => void;
   logout: () => void;
-  loading: boolean; // 👈 new
+  loading: boolean; 
 
 };
 
@@ -26,13 +26,13 @@ type AuthContextType = {
   isAuthenticated: false,
   login: () => {},
   logout: () => {},
-  loading: true, // 👈 this is what TypeScript was crying about
+  loading: true,
 });
 
 export const useAuth = () => useContext(AuthContext);
 
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
-   const [loading, setLoading] = useState(true); // 👈 NEW
+   const [loading, setLoading] = useState(true); 
 
  useEffect(() => {
     const fetchUser = async () => {
@@ -63,7 +63,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     const fetchUser = async () => {
       try {
         const res = await axios.get("/auth/me");
-        setUser(res.data); // expects { fullName, role }
+        setUser(res.data);  
       } catch (err) {
         console.log("No session found.");
       }
@@ -79,7 +79,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
         isAuthenticated: !!user,
         login,
         logout,
-        loading, // 👈 include this!
+        loading,  
       }}
     >
       {children}
