@@ -1,5 +1,6 @@
  import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import axios from "../api/axiosInstance";
 import { useAuth } from "../Context/AuthContext";
 
@@ -103,8 +104,10 @@ const SignUp = () => {
         <button type="submit" className="w-full bg-green-600 text-white py-2 rounded hover:bg-green-700">
           Register
         </button>
+        <p className="text-sm text-center text-gray-600">  Already have an account?{" "}
+          <Link to="/login" className="text-blue-600 hover:underline"> Sign in </Link><p/>
       </form>
-    </div>
+      </div>
   );
 };
 
